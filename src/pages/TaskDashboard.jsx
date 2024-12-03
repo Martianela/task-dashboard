@@ -22,7 +22,8 @@ const TaskDashboard = () => {
     .filter((task) => {
       // Filter tasks based on status
       if (filter === "COMPLETED") return task.completed;
-      if (filter === "PENDING") return !task.completed;
+      if (filter === "PENDING")
+        return !task.completed && new Date(task.dueDate) >= new Date();
       if (filter === "OVERDUE") return new Date(task.dueDate) < new Date();
       return true;
     })
